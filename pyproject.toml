@@ -1,0 +1,70 @@
+# --------------------------
+# 📦 Build System Settings
+# --------------------------
+
+[build-system]
+# 🧰 Tells Python how to build this project (used by pip, PyPI, etc.)
+requires = ["setuptools>=61"]
+#   👉 We need setuptools 61+ to support PEP 621 (modern metadata)
+build-backend = "setuptools.build_meta"
+#   👉 setuptools is our build backend (standard for open-source Python projects)
+
+# --------------------------
+# 🧠 Project Metadata (PEP 621)
+# --------------------------
+
+[project]
+name = "wearable-activity-htad"
+#   📛 The name of your package (used by pip, PyPI, etc.)
+
+version = "0.1.0"
+#   🆕 Initial version; follow Semantic Versioning (major.minor.patch)
+
+description = "ML pipeline for wearable sensor data"
+#   📃 Short summary of your project
+
+authors = [
+  { name = "Johannes Keisers", email = "johanneskeisers@example.com" }
+]
+#   👤 Maintainer metadata (helpful for PyPI, GitHub, collaborators)
+
+readme = "README.md"
+#   📘 Your long description for PyPI (or documentation preview)
+
+requires-python = ">=3.9"
+#   🐍 Minimum Python version your project supports
+
+dependencies = []
+#   📦 Runtime dependencies (e.g., numpy, scikit-learn) go here
+#   We'll add them as we go to keep it minimal and clean
+
+packages = [{include = "wearable_htad", from = "src" }]
+
+# --------------------------
+# 🧹 Linter Configuration: ruff (tool for errors and code checking plus enforces coding standards)
+# --------------------------
+
+[tool.ruff]
+line-length = 88
+#   📏 Max line length (standard: 88 like Black)
+
+select = ["E", "F", "I"]
+#   🔍 Rule sets:
+#   E = pycodestyle errors (PEP 8)
+#   F = pyflakes (code correctness)
+#   I = isort (import sorting)
+
+# --------------------------
+# 🔍 Type Checker Configuration: mypy
+# --------------------------
+
+[tool.mypy]
+strict = true
+#   🚨 Enables strict type checking (excellent habit!)
+
+ignore_missing_imports = true
+#   🧯 Avoids errors from missing 3rd-party type hints (e.g., from numpy)
+
+disallow_untyped_defs = true
+#   ⛔ Warns you if any function lacks type annotations
+
