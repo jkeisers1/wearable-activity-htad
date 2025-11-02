@@ -13,7 +13,7 @@ output_path = project_root / "data" / "processed" / "features.csv"
 
 # Parameters
 sampling_rate = 1000 / 35  # median dt_ms in ms
-window_duration = 2.5
+window_duration = 3.0
 window_size = int(sampling_rate * window_duration)
 overlap = 0.5
 
