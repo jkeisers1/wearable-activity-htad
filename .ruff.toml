@@ -1,0 +1,39 @@
+# .ruff.toml
+# Why: central config so CI and your editor agree on rules.
+
+line-length = 150
+target-version = "py311"
+
+# Exclude notebooks and build artifacts entirely
+exclude = [
+  "notebooks/",
+  "**/*.ipynb",
+  ".venv/",
+  "outputs/",
+]
+
+# Formatter: enables Ruff's code formatter (no separate Black needed)
+[format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+docstring-code-format = true
+
+# Lint rules: start gentle; you can tighten later
+[lint]
+select = [
+  "E",    # pycodestyle errors
+  "F",    # pyflakes
+  "I",    # isort (import sorting)
+  "UP",   # pyupgrade (modernize syntax)
+  "B",    # bugbear (common gotchas)
+  "D",    # pydocstyle (docstrings) – optional; comment out if noisy
+]
+ignore = [
+  "D100","D101","D102","D103","D104","D105","D107", # docstring rules you can re-enable later
+]
+
+# Where to look
+[lint.per-file-ignores]
+# tests can be a bit looser
+"tests/*" = ["D"]

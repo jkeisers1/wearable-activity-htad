@@ -1,0 +1,8 @@
+,brush_teeth,eat_chips,mop_floor,sweep,type_on_keyboard,wash_hands,watch_tv
+brush_teeth,7,4,18,7,0,6,3
+eat_chips,0,48,3,0,0,0,5
+mop_floor,1,2,26,23,0,0,3
+sweep,0,1,27,32,0,0,0
+type_on_keyboard,0,0,0,0,43,0,12
+wash_hands,5,1,4,35,0,20,4
+watch_tv,0,15,1,1,0,9,37

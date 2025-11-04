@@ -1,14 +1,10 @@
 import pandas as pd
-from typing import List
 
 
 def segment_windows(
-    df: pd.DataFrame,
-    window_size: int = 128,
-    overlap: float = 0.5
-) -> List[pd.DataFrame]:
-    """
-    Segment a time-series DataFrame into overlapping windows.
+    df: pd.DataFrame, window_size: int = 128, overlap: float = 0.5
+) -> list[pd.DataFrame]:
+    """Segment a time-series DataFrame into overlapping windows.
 
     Args:
         df: The raw accelerometer DataFrame (must include 'x', 'y', 'z')
@@ -17,6 +13,7 @@ def segment_windows(
 
     Returns:
         A list of DataFrames, each one a window segment.
+
     """
     stride = int(window_size * (1 - overlap))
     windows = []

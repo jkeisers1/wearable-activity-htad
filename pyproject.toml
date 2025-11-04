@@ -1,70 +1,47 @@
-# --------------------------
-# 📦 Build System Settings
-# --------------------------
-
 [build-system]
-# 🧰 Tells Python how to build this project (used by pip, PyPI, etc.)
-requires = ["setuptools>=61"]
-#   👉 We need setuptools 61+ to support PEP 621 (modern metadata)
+requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
-#   👉 setuptools is our build backend (standard for open-source Python projects)
-
-# --------------------------
-# 🧠 Project Metadata (PEP 621)
-# --------------------------
 
 [project]
-name = "wearable-activity-htad"
-#   📛 The name of your package (used by pip, PyPI, etc.)
-
+name = "wearable-htad"
 version = "0.1.0"
-#   🆕 Initial version; follow Semantic Versioning (major.minor.patch)
-
-description = "ML pipeline for wearable sensor data"
-#   📃 Short summary of your project
-
-authors = [
-  { name = "Johannes Keisers", email = "johanneskeisers@example.com" }
-]
-#   👤 Maintainer metadata (helpful for PyPI, GitHub, collaborators)
-
+description = "Human activity recognition using audio + accelerometer data (HTAD dataset)"
 readme = "README.md"
-#   📘 Your long description for PyPI (or documentation preview)
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Johannes Kaisers", email = "your_email@example.com" }]
 
-requires-python = ">=3.9"
-#   🐍 Minimum Python version your project supports
+dependencies = [
+  "numpy>=1.23",
+  "pandas>=2.0",
+  "scikit-learn>=1.3",
+  "scipy>=1.11",
+  "matplotlib>=3.7",
+  "seaborn>=0.12",
+  "lightgbm>=4.0",
+]
 
-dependencies = []
-#   📦 Runtime dependencies (e.g., numpy, scikit-learn) go here
-#   We'll add them as we go to keep it minimal and clean
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "ruff>=0.6",
+  "mypy>=1.10",
+  "jupyter",
+  "pre-commit>=3.5",
+]
 
-packages = [{include = "wearable_htad", from = "src" }]
+[project.scripts]
+wearable-htad-build = "wearable_htad.scripts.build_features:main"
+wearable-htad-train = "wearable_htad.scripts.train_model:main"
+wearable-htad-fuse = "wearable_htad.scripts.make_fusion:main"
 
-# --------------------------
-# 🧹 Linter Configuration: ruff (tool for errors and code checking plus enforces coding standards)
-# --------------------------
+[tool.setuptools]
+package-dir = { "" = "src" }
 
-[tool.ruff]
-line-length = 88
-#   📏 Max line length (standard: 88 like Black)
-
-select = ["E", "F", "I"]
-#   🔍 Rule sets:
-#   E = pycodestyle errors (PEP 8)
-#   F = pyflakes (code correctness)
-#   I = isort (import sorting)
-
-# --------------------------
-# 🔍 Type Checker Configuration: mypy
-# --------------------------
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.mypy]
 strict = true
-#   🚨 Enables strict type checking (excellent habit!)
-
 ignore_missing_imports = true
-#   🧯 Avoids errors from missing 3rd-party type hints (e.g., from numpy)
-
 disallow_untyped_defs = true
-#   ⛔ Warns you if any function lacks type annotations
-

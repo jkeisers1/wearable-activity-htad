@@ -1,18 +1,12 @@
-# wearable-activity-htad
+# 🏃‍♂️ wearable-htad
 
--write a short summary of why we are interested in these features extracted from the raw data
+How do we infer *what a person is doing* from the sensors they carry?
 
+This project explores **human activity recognition** using **wearable accelerometers** and **microphone audio** data from the [HTAD dataset](https://example-link).  
+It fuses both signals to classify activities such as *walking, standing, sitting,* and *lying* using interpretable, classical machine-learning models.
 
--what did the function: X_train, X_test, y_train, y_test = train_test_split(
-    X_audio, y, test_size=0.2, stratify=y, random_state=42
-) do
+The goal was twofold:
+1. Build a **reproducible open-source pipeline** (data → features → models → metrics).
+2. Understand how **sensor fusion** affects generalization across users.
 
--what does the function:
-audio_pipeline = Pipeline([
-    ("scaler", StandardScaler()),
-    ("clf", RandomForestClassifier(n_estimators=100, random_state=42))
-])
-do
-
--eplain confusion matrix
--what are all the features ? 
+I developed the project as part of a broader exploration of health-data analytics — demonstrating how to turn messy real-world signals into structured, validated insight.
